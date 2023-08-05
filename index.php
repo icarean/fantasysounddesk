@@ -4,8 +4,8 @@
 <head>
 
 <title>Sound desk</title>
-
 <!-- Serah Allison 2023 -->
+<!-- This code fights fascists -->
 
 
 <!-- Prevent zoom in/out on Android -->
@@ -41,6 +41,9 @@
 
 <!— Windows 8.1 + IE11 and above —>
 <meta name="msapplication-config" content="icons/browserconfig.xml" />
+
+<!-- Used for the accordion -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
 </html>
@@ -106,6 +109,7 @@ img.alertIcon {
 <body>
 
 <h1><span>Sound desk</span></h1>
+<br/>
 
 <!-- Audio containers and play-audio buttons -->
 <?php
@@ -117,22 +121,37 @@ function endswith($string, $test) {
     if ($testlen > $strlen) return false;
     return substr_compare($string, $test, $strlen - $testlen, $testlen) === 0;
 }
-// Get an array of all the .mp3 files
-$mp3files = array();
-$fileSystemIterator = new FilesystemIterator('sounds');
-foreach ($fileSystemIterator as $fileInfo) {
-  $thisFilename = $fileInfo->getFilename();
-  if (endswith($thisFilename, ".mp3")) {
-    array_push($mp3files, $fileInfo);
+// Get an array of all the subdirectories
+$subDirs = array();
+$listOfFilesAndDirs = new DirectoryIterator('sounds');
+foreach ($listOfFilesAndDirs as $fileOrDirInfo) {
+  if ($fileOrDirInfo->isDir() && !$fileOrDirInfo->isDot()) {
+    $subDirs[] = $fileOrDirInfo->getFilename();
   }
 }
-// Put into ascending alphabetical order
-sort($mp3files, SORT_STRING);
-// Create the audio containers and buttons
-foreach ($mp3files as $mp3file) {
-  $thisFilename = $mp3file->getFilename();
-  echo "<audio id='audioContainer_".$thisFilename."'><source src='sounds/".$thisFilename."' type='audio/mpeg'></audio>\n";
-  echo "<button onclick='playMp3(&quot;audioContainer_".$thisFilename."&quot;)' type='button'>".substr($thisFilename, 0, -4)."</button>\n";
+$subDirs[] = '.';  // Include the sounds base directory at the end of the list
+// Fill arrays of all the .mp3 files in each subdirectory
+foreach ($subDirs as $dir) {
+  if (strcmp($dir, '.'))
+    echo '<h1><span>' . $dir . '</span></h1>';
+  else
+    echo '<h1><span> Unsorted sounds </span></h1>';
+  $mp3files = array();
+  $listOfFiles = new FilesystemIterator('sounds/' . $dir);
+  foreach ($listOfFiles as $fileInfo) {
+    $thisFilename = $fileInfo->getFilename();
+    if (endswith($thisFilename, ".mp3")) {
+      $mp3files[] = $fileInfo;
+    }
+  }
+  // Put into ascending alphabetical order
+  sort($mp3files, SORT_STRING);
+  // Create the audio containers and buttons
+  foreach ($mp3files as $mp3file) {
+    $thisFilename = $mp3file->getFilename();
+    echo "<audio id='audioContainer_".$thisFilename."'><source src='sounds/".$dir.'/'.$thisFilename."' type='audio/mpeg'></audio>\n";
+    echo "<button onclick='playMp3(&quot;audioContainer_".$thisFilename."&quot;)' type='button'>".substr($thisFilename, 0, -4)."</button>\n";
+  }
 }
 
 ?>
