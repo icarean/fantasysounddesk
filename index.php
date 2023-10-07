@@ -67,10 +67,22 @@ p span {
   background-color: whitesmoke;
 }
 h1 {
+  padding-top: 1em;
   text-align: center;
   font-size: 3em;
-  line-height: 0.4em;
+  overflow: scroll;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2em;
   white-space: nowrap;
+}	
+/* Hide scrollbar for Chrome, Safari and Opera */
+h1::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+h1 {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 h1 span {
   background-color: whitesmoke;
@@ -82,8 +94,9 @@ small {
   color: red;
 }
 button {
-  width: 43%;
+  width: 45%;
   height: 3em;
+  vertical-align: top;
   font-size: 1.5em;
   overflow: hidden;
   font-weight: normal;
@@ -121,6 +134,7 @@ function endswith($string, $test) {
     if ($testlen > $strlen) return false;
     return substr_compare($string, $test, $strlen - $testlen, $testlen) === 0;
 }
+
 // Get an array of all the subdirectories
 $subDirs = array();
 $listOfFilesAndDirs = new DirectoryIterator('sounds');
@@ -130,36 +144,57 @@ foreach ($listOfFilesAndDirs as $fileOrDirInfo) {
   }
 }
 $subDirs[] = '.';  // Include the sounds base directory at the end of the list
-// Fill arrays of all the .mp3 files in each subdirectory
+// Fill arrays of all the audio files in each subdirectory
 foreach ($subDirs as $dir) {
-  if (strcmp($dir, '.'))
-    echo '<h1><span>' . $dir . '</span></h1>';
-  else
-    echo '<h1><span> Unsorted sounds </span></h1>';
-  $mp3files = array();
   $listOfFiles = new FilesystemIterator('sounds/' . $dir);
+  $audioFiles = array();
   foreach ($listOfFiles as $fileInfo) {
     $thisFilename = $fileInfo->getFilename();
-    if (endswith($thisFilename, ".mp3")) {
-      $mp3files[] = $fileInfo;
+    if (endswith($thisFilename, ".mp3") || endswith($thisFilename, ".wav") || endswith($thisFilename, ".ogg")) {
+      $audioFiles[] = $fileInfo;
     }
   }
-  // Put into ascending alphabetical order
-  sort($mp3files, SORT_STRING);
-  // Create the audio containers and buttons
-  foreach ($mp3files as $mp3file) {
-    $thisFilename = $mp3file->getFilename();
-    echo "<audio id='audioContainer_".$thisFilename."'><source src='sounds/".$dir.'/'.$thisFilename."' type='audio/mpeg'></audio>\n";
-    echo "<button onclick='playMp3(&quot;audioContainer_".$thisFilename."&quot;)' type='button'>".substr($thisFilename, 0, -4)."</button>\n";
+  if (sizeof($audioFiles)) {
+    if (strcmp($dir, '.'))
+      echo "<h1><span>" . $dir . "</span></h1>\n";
+    else
+      echo "<h1><span> Unsorted sounds </span></h1>\n";
+    // Put into ascending alphabetical order
+    sort($audioFiles, SORT_STRING);
+    // Create the audio containers and buttons
+    foreach ($audioFiles as $audioFile) {
+      $thisFilename = $audioFile->getFilename();
+      echo "<audio id='audioContainer_".$thisFilename."'><source src='sounds/".$dir.'/'.$thisFilename."' type='audio/mpeg'></audio>\n";
+      echo "<button onclick='playMp3(&quot;audioContainer_".$thisFilename."&quot;)' type='button'>".substr($thisFilename, 0, -4)."</button>\n";
+    }
   }
 }
+
+// Buttons to links to external audio
+$linkfiles = array();
+$listOfFiles = new FilesystemIterator('soundlinks/' . $dir);
+foreach ($listOfFiles as $fileInfo) {
+  $thisFilename = $fileInfo->getFilename();
+  $linkfiles[] = $fileInfo;
+}
+if (sizeof($linkfiles)) {
+  echo "<h1><span> Links to web audio </span></h1>\n";
+  // Put into ascending alphabetical order
+  sort($linkfiles, SORT_STRING);
+  // Create the audio containers and buttons
+  foreach ($linkfiles as $linkfile) {
+    $thisFilename = $linkfile->getFilename();
+    echo "<button><a href='".substr(file_get_contents('soundlinks/'.$thisFilename), 0, -1)."' target='_blank' rel='noopener noreferrer'>".$thisFilename."</a></button>\n";
+  }
+}
+
 
 ?>
 
 <!-- Footer -->
 <div id="footer"><small>
   <br /><br />
-  <p><span>Sound desk browser fun. Last updated 30/07/2023. SA<span></p>
+  <p><span>Sound desk browser fun. Last updated 30/10/2023 SA<span></p>
   <p><span><img src="images/256px-Alert_icon-72a7cf.png" class="alertIcon" />Webapps are constrained by browser and OS limitations. If the app doesn't seem to work well, try a different browser or device.</span></p>
   <p><span><a href="soundsources.php">Audio file sources/credits</a></span></p>
 </small></div>

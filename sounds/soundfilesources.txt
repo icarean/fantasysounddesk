@@ -1,63 +1,143 @@
-Wahhwahh horn.mp3
-Original file: 362205__taranp__horn_fail_wahwah_2.wav
-Downloaded from: https://freesound.org/people/TaranP/sounds/362205/
-Author: TaranP
-Licence: Creative Commons 0
-Editing done: Compression/volume
+.mp3
+Original file: 699933__artninja__sword_sheathe_w_ringouts_01312023.mp3
+Downloaded from: https://freesound.org/people/Artninja/sounds/699933/
+Author: Artninja
+Licence: Creative Commons 4.0
+Editing done: 
 
-Truck horn.mp3
-Original file: 637919__kyles__truck-horn-blast-aggressive.flac
-Downloaded from: https://freesound.org/people/kyles/sounds/637919/
-Author: kyles
+.mp3
+Original file: 471148__audroger__sword-slide-2.wav
+Downloaded from: https://freesound.org/people/AuDRoger/sounds/471148/
+Author: AuDRoger
 Licence: Creative Commons 0
-Editing done: Trim
+Editing done: 
 
-Tuohitorvi 1 and 2.mp3
-Original file: 166067__juskiddink__tuohitorvi.wav
-Downloaded from: https://freesound.org/people/juskiddink/sounds/166067/
-Author: juskiddink
+.mp3
+Original file: 574043__thecrow_br__sword.mp3
+Downloaded from: https://freesound.org/people/thecrow_br/sounds/574043/
+Author: thecrow_brArtninja
+Licence: Creative Commons 0
+Editing done: 
+
+.mp3
+Original file: 574821__wesleyextreme_gamer__slash1.ogg
+Downloaded from: https://freesound.org/people/wesleyextreme_gamer/sounds/574821/
+Author: wesleyextreme_gamer
+Licence: Creative Commons 0
+Editing done: 
+
+.mp3
+Original file: 574044__thecrow_br__arrow.mp3
+Downloaded from: https://freesound.org/people/thecrow_br/sounds/574044/
+Author: thecrow_br
+Licence: Creative Commons 0
+Editing done: 
+
+.mp3
+Original file: 511490__lydmakeren__fx_bowarrow.wav
+Downloaded from: https://freesound.org/people/Lydmakeren/sounds/511490/
+Author: Lydmakeren
+Licence: Creative Commons 0
+Editing done: 
+
+.mp3
+Original file: 488659__fission9__bone-fracture.wav
+Downloaded from: https://freesound.org/people/Fission9/sounds/488659/
+Author: Fission9
+Licence: Creative Commons 0
+Editing done: 
+
+.mp3
+Original file: 559974__starkvind__injured-moan.wav
+Downloaded from: https://freesound.org/people/starkvind/sounds/559974/
+Author: starkvind
+Licence: Creative Commons 0
+Editing done: 
+
+
+.mp3
+Original file: 56901__syna-max__wilhelm_scream_outtake.wav
+Downloaded from: https://freesound.org/people/Syna-Max/sounds/56901/
+Author: Syna-Max
+Licence: Creative Commons Attribution NonCommercial 4.0
+Editing done: 
+
+
+.mp3
+Original file: 485009__inspectorj__fox-vocal-cry-distant-01.wav
+Downloaded from: https://freesound.org/people/InspectorJ/sounds/485009/
+Author: InspectorJ
+Licence: Creative Commons 4.0
+Editing done: 
+
+
+.mp3
+Original file: 415209__inspectorj__cat-screaming-a.wav
+Downloaded from: https://freesound.org/people/InspectorJ/sounds/415209/
+Author: InspectorJ
 Licence: Creative Commons Attribution 4.0
-Editing done: Trim
+Editing done: 
 
-Multihorns.mp3 and Horn blip.mp3
-Original file: 570603__ikbenraar__truck_horns.aiff
-Downloaded from: https://freesound.org/people/ikbenraar/sounds/570603/
-Author: ikbenraar
+
+.mp3
+Original file: 
+Downloaded from: https://freesound.org/people/leonseptavaux/sounds/346481/
+Author: leonseptavaux
 Licence: Creative Commons 0
-Editing done: Trim, compression/volume
+Editing done: 
 
-Long airhorn.mp3
-Original file: 64476__guitarguy1985__airhorn.wav
-Downloaded from: https://freesound.org/people/guitarguy1985/sounds/64476/
-Author: guitarguy1985
+
+.mp3
+Original file: 518335__ckolar612__ck_pain_3.wav
+Downloaded from: https://freesound.org/people/ckolar612/sounds/518335/
+Author: ckolar612
 Licence: Creative Commons 0
-Editing done: Trim
+Editing done: 
 
-Trombone glis 1-9.mp3
-Original file: 491009__phonosupf__trombone-glissandi.wav
-Downloaded from: https://freesound.org/people/PhonosUPF/sounds/491009/
-Author: PhonosUPF
+.mp3
+Original file: 198110__vinrax__horror_pain.mp3
+Downloaded from: https://freesound.org/people/Vinrax/sounds/198110/
+Author: Vinrax
+Licence: Creative Commons Attribution 4.0
+Editing done: 
+
+.mp3
+Original file: 555519__eminyildirim__mage-fireball-skill.wav
+Downloaded from: https://freesound.org/people/EminYILDIRIM/sounds/555519/
+Author: EminYILDIRIM
+Licence: Creative Commons Attribution 4.0
+Editing done: 
+
+.mp3
+Original file: 499032__16fthumaf__13_fire-in-fireplace.wav
+Downloaded from: https://freesound.org/people/16FThumaF/sounds/499032/
+Author: 16FThumaF
 Licence: Creative Commons 0
-Editing done: Trim, compression/volume
+Editing done: 
 
-Fart bop.mp3
-Original file: 669351__scape_youtube__fart-remix-by-scape-youtube.mp3
-Downloaded from: https://freesound.org/people/PhonosUPF/sounds/491009/
-Author: Scape_Youtube
+.mp3
+Original file: 
+Downloaded from: https://freesound.org/people/SilverIllusionist/sounds/472688/
+Author: SilverIllusionist
 Licence: Creative Commons Attribution 4.0
-Editing done: Trim, compression/volume
+Editing done: 
 
-Pipe crash.mp3
-Original file: 695639__gamer500__metal-pipe-drop.wav
-Downloaded from: https://freesound.org/people/gamer500/sounds/695639/
-Author: gamer500
-Licence: Creative Commons Attribution 4.0
-Editing done: Trim
+.mp3
+Original file: 186374__samararaine__bonfire-being-lit.wav
+Downloaded from: https://freesound.org/people/samararaine/sounds/186374/
+Author: samararaine
+Licence: Creative Commons 0
+Editing done: 
 
-Short cheer meme.mp3
-Original file: 337000__timkahn__cheer-01.wav
-Downloaded from: https://freesound.org/people/tim.kahn/sounds/337000/
-Author: tim.kahn
-Licence: Creative Commons Attribution 4.0
-Editing done: Trim, compression/volume
+
+
+
+.mp3
+Original file: 
+Downloaded from: 
+Author: 
+Licence: Creative Commons 0
+Editing done: 
+
+
 
