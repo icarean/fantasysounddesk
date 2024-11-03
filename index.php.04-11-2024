@@ -3,8 +3,8 @@
 <meta charset="UTF-8">
 <head>
 
-<title>Fantasy sound desk</title>
-<!-- Serah Allison 2024 v20241104.1120 -->
+<title>Sound desk</title>
+<!-- Serah Allison 2023 -->
 <!-- This code fights fascists -->
 
 
@@ -84,12 +84,6 @@ h1 {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-/* Keep a section on screen when everything else scrolls on */
-.sticky {
-  position: sticky;
-  top: 0;
-  background-color: gray;
-}
 h1 span {
   background-color: whitesmoke;
 }
@@ -100,46 +94,25 @@ small {
   color: red;
 }
 button {
+  width: 45%;
   height: 3em;
   vertical-align: top;
   font-size: 1.5em;
   overflow: hidden;
   font-weight: normal;
   padding: 0;
+  margin-left: 2%;
+  margin-right: 2%;
   margin-top: 3px;
   margin-bottom: 3px;
   border: 1px solid lightgray;
   border-radius: 20px;
-}
-button.sound {
-  width: 44%;
-  margin-left: 4%;
-  margin-right: 1%;
-  background-color: WhiteSmoke;
-}
-button.stop {
-  width: 4%;
-  margin-left: 0;
-  margin-right: 4%;
-  background-color: WhiteSmoke;
-  font-size: 3vw;
-}
-button.playing {
-  background-color: DarkSeaGreen;
-}
-button.stopall {
-  height: 1.5em;
-  width: fit-content;
-  background-color: IndianRed;
+  background-color: offwhite;
 }
 img.alertIcon {
   width: auto;
   height: 0.8em;
   padding-right: 0.5em;
-}
-input[type="range"] {
-  width:90%;
-  pointer-events: none;   // Click through
 }
 </style>
 
@@ -148,12 +121,8 @@ input[type="range"] {
 <html>
 <body>
 
-<!-- Page header -->
-<div class="sticky">
-<h1><span>Fantasy sound desk</span></h1>
-<button class="stopall" onclick='stopAllAudio();' type='button'>STOP ALL</button>
-</div>
-
+<h1><span>Fantasy desk</span></h1>
+<br/>
 
 <!-- Audio containers and play-audio buttons -->
 <?php
@@ -195,56 +164,39 @@ foreach ($subDirs as $dir) {
     // Create the audio containers and buttons
     foreach ($audioFiles as $audioFile) {
       $thisFilename = $audioFile->getFilename();
-      //echo "<audio id='audioContainer_".$thisFilename."' ontimeupdate='updateProgressBar($thisFilename);' onended='stopMp3(&#34;".$thisFilename."&#34;);'><source type='audio/mpeg' src='sounds/".$dir.'/'.$thisFilename."'></audio>\n";
-      echo "<audio id='audioContainer_".$thisFilename."' ontimeupdate='updateProgressBar(&#34;".$thisFilename."&#34;);' onended='stopMp3(&#34;".$thisFilename."&#34;);'><source type='audio/mpeg' src='sounds/".$dir.'/'.$thisFilename."'></audio>\n";
-      echo "<button id='soundbutton_".$thisFilename."' class='sound' onclick='togglePlaying(&#34;".$thisFilename."&#34;)' type='button'>".substr($thisFilename, 0, -4)."<br /><input id='progressBar_".$thisFilename."' type='range' value='0' min='0' max='100' step='1' disabled=True></input></button>\n";
+      echo "<audio id='audioContainer_".$thisFilename."'><source src='sounds/".$dir.'/'.$thisFilename."' type='audio/mpeg'></audio>\n";
+      echo "<button onclick='playMp3(&quot;audioContainer_".$thisFilename."&quot;)' type='button'>".substr($thisFilename, 0, -4)."</button>\n";
     }
   }
 }
 
 // Buttons to links to external audio
-// NEWNEWNEW - for some reason this doesn't work if there isn't a soundlinks/ folder or something
-if (is_dir('soundlinks/')) {
-  $linkfiles = array();
-  $listOfFiles = new FilesystemIterator('soundlinks/');
-  foreach ($listOfFiles as $fileInfo) {
-    $thisFilename = $fileInfo->getFilename();
-    $linkfiles[] = $fileInfo;
-  }
-  if (sizeof($linkfiles)) {
-    echo "<h1 id='linksToWebAudio'><span> Links to web audio </span></h1>\n";
-    // Put into ascending alphabetical order
-    sort($linkfiles, SORT_STRING);
-    // Create the audio containers and buttons
-    foreach ($linkfiles as $linkfile) {
-      $thisFilename = $linkfile->getFilename();
-      echo "<button class='sound'><a href='".file_get_contents('soundlinks/'.$thisFilename)."' target='_blank' rel='noopener noreferrer'>".$thisFilename."</a></button>\n";
-    }
+$linkfiles = array();
+$listOfFiles = new FilesystemIterator('soundlinks/' . $dir);
+foreach ($listOfFiles as $fileInfo) {
+  $thisFilename = $fileInfo->getFilename();
+  $linkfiles[] = $fileInfo;
+}
+if (sizeof($linkfiles)) {
+  echo "<h1><span> Links to web audio </span></h1>\n";
+  // Put into ascending alphabetical order
+  sort($linkfiles, SORT_STRING);
+  // Create the audio containers and buttons
+  foreach ($linkfiles as $linkfile) {
+    $thisFilename = $linkfile->getFilename();
+    echo "<button><a href='".substr(file_get_contents('soundlinks/'.$thisFilename), 0, -1)."' target='_blank' rel='noopener noreferrer'>".$thisFilename."</a></button>\n";
   }
 }
 
-?>
 
-<!-- Loop toggle -->
-<h1><span> Settings </span></h1>
-<table id="toggleSwitches" style="border-spacing: 0 5px;">
-  <tr onClick="toggleLooping();">
-    <td style="width:33%;text-align:right;">Play once </td>
-    <td style="width:33%;border:1px solid black;"><div id="loopingSlider" style="width:1em;height:1em;-webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;background:black;margin-left:0;margin-right:auto;"></div></td>
-    <td style="width:33%;"> Loop all sounds</td>
-  </tr>
-</table>
+?>
 
 <!-- Footer -->
 <div id="footer"><small>
   <br /><br />
-  <p><span>Sound desk browser tool. Last updated 26/09/2024 SA<span></p>
+  <p><span>Sound desk browser fun. Last updated 30/10/2023 SA<span></p>
   <p><span><img src="images/256px-Alert_icon-72a7cf.png" class="alertIcon" />Webapps are constrained by browser and OS limitations. If the app doesn't seem to work well, try a different browser or device.</span></p>
-  <?php
-    if (file_exists('soundsources.php')) {
-      echo "<p><span><a href='soundsources.php'>Audio file sources/credits</a></span></p>";
-    }
-  ?>
+  <p><span><a href="soundsources.php">Audio file sources/credits</a></span></p>
 </small></div>
 
 </body>
@@ -254,55 +206,12 @@ if (is_dir('soundlinks/')) {
 
 <script type="text/javascript">
 
-var looping = 0;
-
-// Toggle the playing / stopped state of the audioContainer
-function togglePlaying(audioFileName) {
-  if (document.getElementById("audioContainer_" + audioFileName).paused) {
-    playMp3(audioFileName);
-  } else {
-    stopMp3(audioFileName);
-  }
-}
-
-// Play a .mp3, given the name of the audio container
-function playMp3(audioFileName) {
-  document.getElementById("soundbutton_" + audioFileName).classList.add("playing");
-  document.getElementById("audioContainer_" + audioFileName).currentTime = 0;
-  document.getElementById("audioContainer_" + audioFileName).play();
-}
-
-function stopMp3(audioFileName) {
-  document.getElementById("soundbutton_" + audioFileName).classList.remove("playing");
-  document.getElementById("audioContainer_" + audioFileName).currentTime = 0;
-  document.getElementById("audioContainer_" + audioFileName).pause();
-}
-
-// 
-function stopAllAudio() {
-  document.querySelectorAll('audio').forEach(el => {el.pause(); el.currentTime = 0;});
-  document.querySelectorAll('button').forEach(el => {el.classList.remove("playing");});
-}
-
-// 
-function toggleLooping() {
-  if (looping==1) {
-    looping=0;
-    document.getElementById("loopingSlider").style.marginLeft="0";
-    document.getElementById("loopingSlider").style.marginRight="auto";
-  } else {
-    looping=1;
-    document.getElementById("loopingSlider").style.marginLeft="auto";
-    document.getElementById("loopingSlider").style.marginRight="0";
-  }
-  document.querySelectorAll('audio').forEach(el => {el.loop = looping;});
-}
-
-//
-function updateProgressBar(audioFileName) {
-  audioContainer = document.getElementById("audioContainer_" + audioFileName);
-  document.getElementById("progressBar_" + audioFileName).value = audioContainer.currentTime / audioContainer.duration * 100
-}
+// Playing a .mp3, given the name of the audio container
+function playMp3(audioContainerID) {
+  audioContainer = document.getElementById(audioContainerID);
+  audioContainer.play(); 
+} 
 
 
 </script>
+
